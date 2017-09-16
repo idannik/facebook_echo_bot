@@ -1,0 +1,23 @@
+{
+  "name": "facebook_bot",
+  "version": "1.0.0",
+  "description": "testing a facebook bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "haha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/idannik/facebook_echo_bot.git"
+  },
+  "keywords": [
+    "facebook",
+    "bot"
+  ],
+  "author": "Idan Nikritin <Idan.Nik@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idannik/facebook_echo_bot/issues"
+  },
+  "homepage": "https://github.com/idannik/facebook_echo_bot#readme"
+}
