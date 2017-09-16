@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/idannik/facebook_echo_bot/issues"
   },
-  "homepage": "https://github.com/idannik/facebook_echo_bot#readme"
+  "homepage": "https://github.com/idannik/facebook_echo_bot#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "request": "^2.81.0"
+  }
 }
