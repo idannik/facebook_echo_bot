@@ -4,6 +4,7 @@
   "description": "testing a facebook bot",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "haha"
   },
   "repository": {
