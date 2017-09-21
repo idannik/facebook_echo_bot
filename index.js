@@ -104,8 +104,8 @@ function receivedMessage(event) {
       console.log(attachment)
       if (attachment.type=="location") {
         console.log("detected location")   
-        let lat = messageAttachments.payload.coordinates.lat
-        let lng = messageAttachments.payload.coordinates.long
+        let lat = attachment.payload.coordinates.lat
+        let lng = attachment.payload.coordinates.long
         msg = `received location 😎, lat = ${lat}, lng = ${lng}`
       }
       sendTextMessage(senderID, msg);
