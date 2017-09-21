@@ -99,16 +99,17 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    let msg =`type is ${ messageAttachments.type}`
-    console.log(messageAttachments, messageAttachments,messageAttachments['type'])
-    if (messageAttachments.type=="location") {
-      console.log("detected location")
-      
-      let lat = messageAttachments.payload.coordinates.lat
-      let lng = messageAttachments.payload.coordinates.long
-      msg = `received location 😎, lat = ${lat}, lng = ${lng}`
-    }
-    sendTextMessage(senderID, msg);
+    messageAttachments.forEach( (attachment)=>{
+      let msg =`type is ${ attachment.type}`
+      console.log(attachment)
+      if (messageAttachments.type=="location") {
+        console.log("detected location")   
+        let lat = messageAttachments.payload.coordinates.lat
+        let lng = messageAttachments.payload.coordinates.long
+        msg = `received location 😎, lat = ${lat}, lng = ${lng}`
+      }
+      sendTextMessage(senderID, msg);
+    })
   }
 }
 
