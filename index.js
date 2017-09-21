@@ -70,8 +70,6 @@ app.post('/webhook', function (req, res) {
 });
 
 // Incoming events handling
-
-
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
