@@ -125,6 +125,7 @@ function receivedPostback(event) {
 //////////////////////////
 
 function sendLocationQuickReply(recipientId) {
+  console.log(`sending a location quick reply to ${recipientId}`)
   var messageData = {
     recipient: {
       id: recipientId
