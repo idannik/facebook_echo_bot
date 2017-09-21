@@ -130,11 +130,13 @@ function sendLocationQuickReply(recipientId) {
     recipient: {
       id: recipientId
     },
-    text: "please send us your location",
-    "quick_replies":[
-      {
-        "content_type":"location"
-      }]
+    message: {      
+      text: "please send us your location",
+      "quick_replies":[
+        {
+          "content_type":"location"
+        }]
+    }
   };
 
   callSendAPI(messageData);
