@@ -102,7 +102,7 @@ function receivedMessage(event) {
     messageAttachments.forEach( (attachment)=>{
       let msg =`type is ${ attachment.type}`
       console.log(attachment)
-      if (messageAttachments.type=="location") {
+      if (attachment.type=="location") {
         console.log("detected location")   
         let lat = messageAttachments.payload.coordinates.lat
         let lng = messageAttachments.payload.coordinates.long
