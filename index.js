@@ -94,6 +94,7 @@ function receivedMessage(event) {
         break;
       case "location":
         sendLocationQuickReply(senderID);
+      break;
       default:
         sendTextMessage(senderID, messageText);
     }
