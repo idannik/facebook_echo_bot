@@ -99,8 +99,9 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    console.log(messageAttachments)
     let msg = "Message with attachment received"
+    console.log(`type is ${ essageAttachments.type}`)
+    
     if (messageAttachments.type=="location") {
       console.log("detected location")
       
