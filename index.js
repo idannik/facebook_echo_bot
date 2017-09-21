@@ -99,7 +99,13 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
+    let msg = "Message with attachment received"
+    if (messageAttachments.type=="location") {
+      let lat = messageAttachments.payload.coordinates.lat
+      let lng = messageAttachments.payload.coordinates.long
+      msg = `received location 😎, lat = ${lat}, lng = ${lng}`
+    }
+    sendTextMessage(senderID, msg);
   }
 }
 
