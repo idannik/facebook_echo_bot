@@ -99,6 +99,7 @@ function receivedMessage(event) {
         sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
+    console.log(messageAttachments)
     let msg = "Message with attachment received"
     if (messageAttachments.type=="location") {
       let lat = messageAttachments.payload.coordinates.lat
