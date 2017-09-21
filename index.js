@@ -70,6 +70,8 @@ app.post('/webhook', function (req, res) {
 });
 
 // Incoming events handling
+
+
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -92,7 +94,8 @@ function receivedMessage(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-
+      case "location":
+        sendLocationQuickReply(senderID);
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -121,6 +124,21 @@ function receivedPostback(event) {
 //////////////////////////
 // Sending helpers
 //////////////////////////
+
+function sendLocationQuickReply(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    "quick_replies":[
+      {
+        "content_type":"location"
+      }]
+  };
+
+  callSendAPI(messageData);
+}
+
 function sendTextMessage(recipientId, messageText) {
   var messageData = {
     recipient: {
