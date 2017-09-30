@@ -2,10 +2,13 @@
 // This is main file containing code implementing the Express server and functionality for the Express echo bot.
 //
 'use strict';
+require('dotenv').config()
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const path = require('path');
+const graph_controller = require('./src/GraphApiController')
 var messengerButton = "<html><head><title>Facebook Messenger Bot</title></head><body><h1>Facebook Messenger Bot</h1>This is a bot based on Messenger Platform QuickStart. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 
 // The rest of the code implements the routes for our Express server.
@@ -18,13 +21,14 @@ app.use(bodyParser.urlencoded({
 
 // Webhook validation
 app.get('/webhook', function(req, res) {
+  console.log(req.query)
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
-  } else {
+  } else { 
     console.error("Failed validation. Make sure the validation tokens match.");
-    res.sendStatus(403);          
+    res.sendStatus(403);           
   }
 });
 
@@ -94,7 +98,10 @@ function receivedMessage(event) {
         break;
       case "location":
         sendLocationQuickReply(senderID);
-      break;
+        break;
+      case "api_test":
+        graph_controller.Search('pizza');
+        break;
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -107,6 +114,7 @@ function receivedMessage(event) {
         let lat = attachment.payload.coordinates.lat
         let lng = attachment.payload.coordinates.long
         msg = `received location 😎, lat = ${lat}, lng = ${lng}`
+        graph_controller.SearchPlaceByLocation('pizza', 5000, lat, lng, "location, link, is_verified,hours,parking,price_range,single_line_address,website")
       }
       sendTextMessage(senderID, msg);
     })

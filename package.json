@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "haha"
+    "test": "haha",
+    "dev" : "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,10 @@
   "homepage": "https://github.com/idannik/facebook_echo_bot#readme",
   "dependencies": {
     "body-parser": "^1.18.1",
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "request-promise": "^4.2.2",
+    "require-promise": "^1.0.1"
   }
 }
